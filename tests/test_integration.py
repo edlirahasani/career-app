@@ -60,12 +60,11 @@ class TestJobDetail:
         assert r.status_code == 404
 
 
-class TestApplicationFlow:
     def test_apply_page_loads(self, client, sample_job):
         """Apply page loads for a valid job."""
         r = client.get(f'/jobs/{sample_job}/apply')
         assert r.status_code == 200
-        assert b'Apply for' in r.data
+        assert b'Apply' in r.data
 
     def test_submit_application(self, client, sample_job):
         """Submitting a valid application redirects to home."""

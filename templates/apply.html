@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Apply - {{ job.title }}{% endblock %}
+{% block content %}
+<div class="card">
+    <h1>Apply for: {{ job.title }}</h1>
+    <p style="margin-bottom:20px; color:#555;">{{ job.company }} — {{ job.location }}</p>
+    <form method="POST">
+        <label>Full Name *</label>
+        <input type="text" name="name" required>
+        <label>Email *</label>
+        <input type="email" name="email" required>
+        <label>Cover Letter (optional)</label>
+        <textarea name="cover_letter" rows="5" placeholder="Tell us why you are a great fit..."></textarea>
+        <button type="submit" class="btn btn-primary">Submit Application</button>
+        <a href="/jobs/{{ job.id }}" class="btn btn-secondary" style="margin-left:10px;">Back</a>
+    </form>
+</div>
+{% endblock %}
