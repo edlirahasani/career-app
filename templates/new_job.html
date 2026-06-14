@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Post a Job - CareerHub{% endblock %}
+{% block content %}
+<div class="card">
+    <h1>Post a New Job</h1>
+    <form method="POST">
+        <label>Job Title *</label>
+        <input type="text" name="title" required>
+        <label>Company *</label>
+        <input type="text" name="company" required>
+        <label>Location *</label>
+        <input type="text" name="location" required>
+        <label>Salary (optional)</label>
+        <input type="text" name="salary" placeholder="e.g. $50,000 - $70,000">
+        <label>Job Description *</label>
+        <textarea name="description" rows="6" required></textarea>
+        <button type="submit" class="btn btn-primary">Post Job</button>
+        <a href="/" class="btn btn-secondary" style="margin-left:10px;">Cancel</a>
+    </form>
+</div>
+{% endblock %}
