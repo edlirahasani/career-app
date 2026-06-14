@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}{{ job.title }} - CareerHub{% endblock %}
+{% block content %}
+<div class="card">
+    <h1>{{ job.title }}</h1>
+    <p><strong>Company:</strong> {{ job.company }}</p>
+    <p><strong>Location:</strong> {{ job.location }}</p>
+    {% if job.salary %}<p><strong>Salary:</strong> {{ job.salary }}</p>{% endif %}
+    <p style="margin-top: 16px;">{{ job.description }}</p>
+    <div style="margin-top: 20px; display:flex; gap:10px;">
+        <a href="/jobs/{{ job.id }}/apply" class="btn btn-primary">Apply Now</a>
+        <a href="/" class="btn btn-secondary">Back</a>
+        <form method="POST" action="/jobs/{{ job.id }}/delete" style="display:inline;">
+            <button type="submit" class="btn btn-danger" onclick="return confirm('Delete this job?')">Delete</button>
+        </form>
+    </div>
+</div>
+<h2>Applications ({{ job.applications|length }})</h2>
+{% for app in job.applications %}
+<div class="card">
+    <p><strong>{{ app.applicant_name }}</strong> — {{ app.applicant_email }}</p>
+    {% if app.cover_letter %}<p style="margin-top:8px;">{{ app.cover_letter }}</p>{% endif %}
+</div>
+{% else %}
+<div class="card"><p>No applications yet.</p></div>
+{% endfor %}
+{% endblock %}
